@@ -1,5 +1,11 @@
-$(document).ready(function() { //Runs after page is loaded
+$(document).ready(function () {
+  // Button allows user to input data on click. Whatever user inputs is printed to the DOM
+  $('#input').click (function() {
+    let input = prompt('Please input some data:');
+    document.getElementById("chartspace").innerHTML = input;
+  });
 
+});
   /* jQuery Action:
    $('#selector').method1().method2().methodn();
 
@@ -22,4 +28,4 @@ $(document).ready(function() { //Runs after page is loaded
   })
 
 */
-});
+
