@@ -1,0 +1,17 @@
+.bar {
+  padding: 50px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 10px solid greenyellow;
+  display: inline-block;
+}
+
+h1 {
+  text-align: center;
+}
+
+.button {
+  text-align: center;
+}

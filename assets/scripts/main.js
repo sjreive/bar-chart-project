@@ -1,9 +1,21 @@
 $(document).ready(function () {
+
+
+  function createBar(array){
+    for (let i = 0; i < array.length; i++) {
+      $('<div class="bar"></div>').appendTo("#chartspace");
+    }
+  };
+
   // Button allows user to input data on click. Whatever user inputs is printed to the DOM
   $('#input').click (function() {
     let input = prompt('Please input some data:');
-    document.getElementById("chartspace").innerHTML = input;
+    input= input.split(",", 10); //converts input string to an array
+    createBar(input);
   });
+
+
+
 
 });
   /* jQuery Action:
