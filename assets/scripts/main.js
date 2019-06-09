@@ -16,12 +16,23 @@ $(document).ready(function () {
     }
   }
 
+  function barWidth(array){
+    let length= array.length;
+    setBarWidth = 90/(length*2-1);
+    setMarginWidth = setBarWidth/4;
+    for (let i= 1; i <= array.length; i++) {
+     document.getElementById("bar"+ i).style.width = setBarWidth+"vw" //sets width of bars based on number of input values
+     document.getElementById("bar"+ i).style.marginLeft = setMarginWidth+"vw"; //sets the width of the margins on either side of the bars
+     document.getElementById("bar"+ i).style.marginRight = setMarginWidth+"vw";
+    }
+  }
   // Button allows user to input comma-separated data on click.
   $('#input').click (function() {
     let input = prompt('Please input some data:');
-    input= input.split(",", 10); //converts input string to an array
-    createBar(input); //calls data createBar function to append a bar for each data element added
+    input= input.split(",", 15); //converts input string to an array
+    createBar(input); //calls createBar function to append a bar for each data element added
     barHeight(input); // calls barHeight function
+    barWidth(input); // calls barWidth function
   });
 
 
