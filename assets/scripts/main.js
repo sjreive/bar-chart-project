@@ -8,8 +8,11 @@ $(document).ready(function () {
   };
 
   function barHeight(array){
+    let maxVal = Math.max(...array);
+    let multiplier;
     for (let i = 0; i < array.length; i++) {
-      document.getElementById("bar"+(i+1)).style.height = array[i]+"px"; //assigns height of bar based on input value
+      multiplier = (array[i]/maxVal)*300;
+      document.getElementById("bar"+(i+1)).style.height = multiplier+"px"; //assigns height of bar based on input value
     }
   }
 

@@ -1,11 +1,12 @@
 .bar {
-  padding: 50px;
   margin-top: 100px;
   margin-bottom: 100px;
   margin-left: 20px;
   margin-right: 20px;
-  border: 10px solid greenyellow;
+  background-color: greenyellow;
   display: inline-block;
+  max-height: 300px;
+  width: 20px;
 }
 
 h1 {
@@ -14,4 +15,9 @@ h1 {
 
 .button {
   text-align: center;
+}
+
+#chartspace {
+  max-height: 500px;
+  margin-left: 50px;
 }
