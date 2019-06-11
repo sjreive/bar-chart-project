@@ -10,14 +10,17 @@ FUNCTIONS
 
     - barHeight ajusts the height of the bar based on the magnitude of the array element (as a % of the largest element)
 
-    - barWidth adjusts the width of the bars based on the number of inputs and the width of the viewport
+    - barWidth adjusts the width of the bars based on the number of inputs and the width of the viewport and adds generic labels
+
+    - generateYscale creates y-axis & axis labels
 
 
 **********
 NEXT STEPS
 **********
-- Update the onClick function prompt to take labels as well as numbers (objects rather than 1D array)
-- Create a function that will display x & y axes
+- Add data labels to each bar
+- Add axis titles
+- Create a function that when you click on the label a prompt box allows you to change it
 
 *********
 RESOURCES
@@ -28,3 +31,7 @@ RESOURCES
 
 - Article on appending div elements using jQuery : 
 https://www.geeksforgeeks.org/how-to-create-a-div-element-in-jquery/
+
+- stack overflow question about generating a vertical line:
+https://stackoverflow.com/questions/7512877/how-can-we-draw-a-vertical-line-in-the-webpage/17043906
+

@@ -1,11 +1,4 @@
-.bar {
-  margin-top: 100px;
-  margin-bottom: 100px;
-  background-color: greenyellow;
-  display: inline-block;
-  max-height: 300px;
-  max-width: 15vw;
-}
+
 
 h1 {
   text-align: center;
@@ -15,7 +8,77 @@ h1 {
   text-align: center;
 }
 
-#chartspace {
-  margin-left: 10vw;
-  margin-right: 10vw;
+#chart {
+  margin: auto;
+  width: 70%;
 }
+
+#chartspace {
+  display: inline-block;
+  width: 80%;
+
+}
+
+.bar {
+  margin-top: 100px;
+  margin-bottom: -4px;
+  background-color: greenyellow;
+  display: inline-block;
+  max-height: 300px;
+}
+
+#xlabelspace {
+  margin-left: 19%;
+}
+
+#xaxis{
+
+}
+
+hr {
+  border-width: 1px;
+  margin-top: 0px;
+  border-color: black;
+}
+
+.xlabel {
+  display: inline-block;
+  height: 20px;
+  max-width: 15vw;
+  text-align: center;
+}
+
+#ylabelspace{
+  display: inline-block;
+  width: 19%;
+  height: 350px;
+  position: relative;
+  margin-bottom: -6px;
+}
+
+#yaxis{
+  width: 2px;
+  height: 350px;
+  background-color: black;
+  float: right;
+}
+#yscale{
+  height: 350px;
+  width: auto;
+  float: right;
+}
+
+.ylabel{
+  width: auto;
+  display: block;
+  text-align: right;
+}
+
+
+
+
+
+
+
+
+
