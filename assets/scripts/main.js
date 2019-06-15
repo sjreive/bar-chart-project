@@ -30,16 +30,16 @@ $(document).ready(function () {
   function barWidth(array){
     let length= array.length;
     setBarWidth = 100/(length*1.5);
-    setMarginWidth = setBarWidth/4;
-    for (let i= 1; i <= array.length; i++) {
-     document.getElementById("bar"+ i).style.width = setBarWidth+"%"; //sets width of bars based on number of input values
-     document.getElementById("bar"+ i).style.marginLeft = setMarginWidth+"%"; //sets the width of the margins on either side of the bars
-     document.getElementById("bar"+ i).style.marginRight = setMarginWidth+"%";
+    setMarginWidth = setBarWidth / 4;
+    for (let i = 1; i <= array.length; i++) {
+     document.getElementById("bar" + i).style.width = setBarWidth+"%"; //sets width of bars based on number of input values
+     document.getElementById("bar" + i).style.marginLeft = setMarginWidth+"%"; //sets the width of the margins on either side of the bars
+     document.getElementById("bar" + i).style.marginRight = setMarginWidth+"%";
     // NTS figure out if there is a way to make this more efficient..
-     document.getElementById("xlabel"+i).style.width = setBarWidth+"%";
-     document.getElementById("xlabel"+ i).style.marginLeft = setMarginWidth+"%"; //sets the width of the margins on either side of the bars
-     document.getElementById("xlabel"+ i).style.marginRight = setMarginWidth+"%";
-     document.getElementById("xlabel"+i).innerHTML = "LABEL";
+     document.getElementById("xlabel" + i).style.width = setBarWidth+"%";
+     document.getElementById("xlabel" + i).style.marginLeft = setMarginWidth+"%"; //sets the width of the margins on either side of the bars
+     document.getElementById("xlabel" + i).style.marginRight = setMarginWidth+"%";
+     document.getElementById("xlabel" + i).innerHTML = "LABEL";
     }
   }
 
@@ -51,7 +51,17 @@ $(document).ready(function () {
     $("<div/>", {id: "yaxis","class": "axis"}).appendTo("#ylabelspace");
   }
 
-  function generateYscale(array){
+  function generateDataLabelSpace(array){
+    for (let i = 1; i <= array.length; i++){
+    $("<div/>", {"class": "label", id: "datalabel" + i}).appendTo("#bar" + i);
+    }
+  }
+  function generateLabels(array){
+  for (let i = 1; i <= array.length; i++){
+    document.getElementById("datalabel" + i).innerHTML = array[i-1];
+    }
+  }
+  function generateYScale(array){
     let yInterval = 0; // determined by max val, will be customizeable
     let chartHeight = 350; //will be customizeable
     let numOfYVals = 7; // will be customizeable
@@ -74,12 +84,14 @@ $(document).ready(function () {
     let input = prompt('Please input some data:');
     input= input.split(",",10); //converts input string to an array
     generateYAxis();
-    generateYscale(input);
+    generateYScale(input);
     generateXAxis();
     generateXLabels(input);
     createBar(input); //calls createBar function to append a bar for each data element added
     barHeight(input); // calls barHeight function
     barWidth(input); // calls barWidth function
+    generateDataLabelSpace(input);
+    generateLabels(input);
   });
 
 });

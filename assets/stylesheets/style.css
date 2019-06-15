@@ -20,19 +20,23 @@ h1 {
 }
 
 .bar {
-  margin-top: 100px;
-  margin-bottom: -4px;
+  margin-top: 10px;
   background-color: greenyellow;
   display: inline-block;
   max-height: 300px;
+  vertical-align: bottom;
+}
+
+.label {
+  height: auto;
+  text-align: center;
+  position: relative;
+  width: auto;
+  display: in-line block;
 }
 
 #xlabelspace {
   margin-left: 19%;
-}
-
-#xaxis{
-
 }
 
 hr {
@@ -50,10 +54,11 @@ hr {
 
 #ylabelspace{
   display: inline-block;
+  margin-bottom: -2px;
   width: 19%;
   height: 350px;
   position: relative;
-  margin-bottom: -6px;
+  vertical-align: bottom;
 }
 
 #yaxis{

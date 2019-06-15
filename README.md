@@ -12,13 +12,25 @@ FUNCTIONS
 
     - barWidth adjusts the width of the bars based on the number of inputs and the width of the viewport and adds generic labels
 
-    - generateYscale creates y-axis & axis labels
+    - generateYAxis generates the vertical line (Y Axis) for the chart
+    - generateYScale calculates & generates Y axis labels.
+    - generateXLabels(input) generates the horizontall line for the X Axis
+  
+    - generateXLabels(input) generates HTML label for each element in the array
 
+    - generateDataLabelSpace(input) appends a div to each bar in the chart to provide space for the label
+    
+    generateLabels(input) appends text to the label space div which matches the input array.
+
+***********
+ISSUES/BUGS
+***********
+- Y axis labels are rouding incorrectly for small numbers.
 
 **********
 NEXT STEPS
 **********
-- Add data labels to each bar
+- Option to position label at center or bottom of the bar
 - Add axis titles
 - Create a function that when you click on the label a prompt box allows you to change it
 
@@ -32,6 +44,13 @@ RESOURCES
 - Article on appending div elements using jQuery : 
 https://www.geeksforgeeks.org/how-to-create-a-div-element-in-jquery/
 
-- stack overflow question about generating a vertical line:
+- Stack overflow question about generating a vertical line:
 https://stackoverflow.com/questions/7512877/how-can-we-draw-a-vertical-line-in-the-webpage/17043906
+
+- w3schools CSS vertical-align Property
+https://www.w3schools.com/cssref/pr_pos_vertical-align.asp
+
+- Article on placing a Div inside another Div:
+http://www.corelangs.com/css/box/divindiv.html
+
 
