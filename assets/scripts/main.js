@@ -88,12 +88,20 @@ $(document).ready(function () {
     document.getElementById("yaxistitle").innerHTML = "Y AXIS TITLE";
   }
 
+  function generateChartSpace(){
+    $("<div/>",{id:"ylabelspace"}).appendTo("#chart");
+    $("<div/>",{id:"chartspace"}).appendTo("#chart");
+    $("<div/>",{id:"xlabelspace"}).appendTo("#chart");
+    $("<div/>",{id:"xaxis"}).appendTo("#xlabelspace");
+  }
+
   // Button allows user to input comma-separated data on click.
   //$('#input').click (function()
   //let input = prompt('Please input some data:');
 
   function drawBarChart(input){
     input= input.split(",",10); //converts input string to an array
+    generateChartSpace();
     generateYAxis();
     generateYScale(input);
     generateYAxisTitle();
