@@ -88,10 +88,11 @@ $(document).ready(function () {
     document.getElementById("yaxistitle").innerHTML = "Y AXIS TITLE";
   }
 
-
   // Button allows user to input comma-separated data on click.
-  $('#input').click (function() {
-    let input = prompt('Please input some data:');
+  //$('#input').click (function()
+  //let input = prompt('Please input some data:');
+
+  function drawBarChart(input){
     input= input.split(",",10); //converts input string to an array
     generateYAxis();
     generateYScale(input);
@@ -104,6 +105,6 @@ $(document).ready(function () {
     barWidth(input); // calls barWidth function
     generateDataLabelSpace(input);
     generateLabels(input);
-  });
-
+  }
+drawBarChart("10,20,30,40");
 });

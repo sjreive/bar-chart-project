@@ -20,18 +20,20 @@ FUNCTIONS
 
     - generateDataLabelSpace(input) appends a div to each bar in the chart to provide space for the label
     
-    generateLabels(input) appends text to the label space div which matches the input array.
+    - generateLabels(input) appends text to the label space div which matches the input array.
 
 ***********
 ISSUES/BUGS
 ***********
 - Y axis labels are rouding incorrectly for small numbers.
+- Y axis ticks are very close but don't quite align with actual values.
 
 **********
 NEXT STEPS
 **********
-- Option to position label at center or bottom of the bar
-- Add axis titles
+- Add function that generates Chart Area
+- Add function that generates chartspace, y axis space and x axis space
+- Add option to position label at center or bottom of the bar
 - Create a function that when you click on the label a prompt box allows you to change it
 
 *********
