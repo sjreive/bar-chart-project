@@ -63,7 +63,7 @@ $(document).ready(function () {
   }
   function generateYScale(array){
     let yInterval = 0; // determined by max val, will be customizeable
-    let chartHeight = 350; //will be customizeable
+    let chartHeight = 300; //will be customizeable
     let numOfYVals = 7; // will be customizeable
     let height = chartHeight/numOfYVals;
     yInterval = Math.max(...array)/numOfYVals;
@@ -78,6 +78,16 @@ $(document).ready(function () {
     }
   }
 
+  function generateXAxisTitle(){
+    $("<div/>",{id: "xaxistitle"}).appendTo("#xlabelspace");
+    document.getElementById("xaxistitle").innerHTML = "X AXIS TITLE";
+  }
+
+  function generateYAxisTitle(){
+    $("<div/>",{id:"yaxistitle"}).appendTo("#ylabelspace");
+    document.getElementById("yaxistitle").innerHTML = "Y AXIS TITLE";
+  }
+
 
   // Button allows user to input comma-separated data on click.
   $('#input').click (function() {
@@ -85,8 +95,10 @@ $(document).ready(function () {
     input= input.split(",",10); //converts input string to an array
     generateYAxis();
     generateYScale(input);
+    generateYAxisTitle();
     generateXAxis();
     generateXLabels(input);
+    generateXAxisTitle();
     createBar(input); //calls createBar function to append a bar for each data element added
     barHeight(input); // calls barHeight function
     barWidth(input); // calls barWidth function
