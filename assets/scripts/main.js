@@ -6,10 +6,12 @@
 $(document).ready(function () {
 
 // function that takes an array, and iterates through to generate a "bar" (div) for each element
-  function createBar(array){
-    for (let i = 0; i < array.length; i++) {
+  function createBar(chartValues, options){
+    for (let i = 0; i < chartValues.length; i++) {
       $("<div/>", {"class": "bar", id: "bar"+(i+1)}).appendTo("#chartspace");
     }
+    let colour = options.barColour;
+    $(".bar").css({"background-color":colour});
   }
 
   function barHeight(array){
@@ -53,13 +55,26 @@ $(document).ready(function () {
 
   function generateDataLabelSpace(array){
     for (let i = 1; i <= array.length; i++){
-    $("<div/>", {"class": "label", id: "datalabel" + i}).appendTo("#bar" + i);
+    $("<div/>", {"class": "label",
+                  id: "datalabel" + i,
+                  "height": "25px",
+                  "text-align": "center",
+                  "position": "absolute",
+                  "width": "100%",
+                }).appendTo("#bar" + i);
     }
   }
-  function generateLabels(array){
-  for (let i = 1; i <= array.length; i++){
-    document.getElementById("datalabel" + i).innerHTML = array[i-1];
+  function generateLabels(chartValues, options){
+  for (let i = 1; i <= chartValues.length; i++){
+    document.getElementById("datalabel" + i).innerHTML = chartValues[i-1]; //create the label
+  }
+  if (options.labelPosition === "centre") {
+      $(".label").css({"top":"50%"});
+    } else if (options.labelPosition === "bottom") {
+      $(".label").css({"bottom":0});
     }
+    $(".label").css({"text-align": "center",
+                      "position": "absolute"});
   }
   function generateYScale(array){
     let yInterval = 0; // determined by max val, will be customizeable
@@ -99,7 +114,7 @@ $(document).ready(function () {
   //$('#chartValues').click (function()
   //let chartValues = prompt('Please chartValues some data:');
 
-  function drawBarChart(data){
+  function drawBarChart(data, options){
     let chartValues = Object.values(data); // array containing values
     let valueLabels = Object.keys(data);
     generateChartSpace();
@@ -109,16 +124,23 @@ $(document).ready(function () {
     generateXAxis();
     generateXLabels(chartValues);
     generateXAxisTitle();
-    createBar(chartValues); //calls createBar function to append a bar for each data element added
+    createBar(chartValues, options); //calls createBar function to append a bar for each data element added
     barHeight(chartValues); // calls barHeight function
     barWidth(chartValues, valueLabels); // calls barWidth function
     generateDataLabelSpace(chartValues);
-    generateLabels(chartValues);
+    generateLabels(chartValues, options);
   }
-let object= {
+
+// Actual input for chart
+  let data = {
   apple: 28,
   orange: 17,
   pear: 54,
 }
-drawBarChart(object);
+let options = {
+  labelPosition: "bottom", //options: top, bottom, or center;
+  barColour: "purple",
+}
+
+drawBarChart(data, options);
 });
