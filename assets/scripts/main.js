@@ -1,11 +1,5 @@
-// drawBarChart(data,options,element)
-// data is an array
-// options ie width, height, etc.
-//element is where chart will get rendered
-
 $(document).ready(function () {
 
-// function that takes an array, and iterates through to generate a "bar" (div) for each element
   function createBar(chartValues, options){
     for (let i = 0; i < chartValues.length; i++) {
       $("<div/>", {"class": "bar", id: "bar"+(i+1)}).appendTo("#chartspace");
@@ -105,15 +99,17 @@ $(document).ready(function () {
   }
 
   function generateChartSpace(){
+    $("<div/>", {id:"titlespace", "height":"30px","margin-left":"19%"}).appendTo("#chart");
     $("<div/>",{id:"ylabelspace"}).appendTo("#chart");
     $("<div/>",{id:"chartspace"}).appendTo("#chart");
     $("<div/>",{id:"xlabelspace"}).appendTo("#chart");
     $("<div/>",{id:"xaxis"}).appendTo("#xlabelspace");
   }
 
-  // Button allows user to chartValues comma-separated data on click.
-  //$('#chartValues').click (function()
-  //let chartValues = prompt('Please chartValues some data:');
+  function generateTitle(options){
+    document.getElementById("titlespace").innerHTML = options.chartTitle;
+    $("#titlespace").css({"margin-left": "19%","margin-bottom":"30px", "text-align":"center"})
+  }
 
   function drawBarChart(data, options){
     let chartValues = Object.values(data); // array containing values
@@ -130,6 +126,7 @@ $(document).ready(function () {
     barWidth(chartValues, valueLabels); // calls barWidth function
     generateDataLabelSpace(chartValues);
     generateLabels(chartValues, options);
+    generateTitle(options);
   }
 
 // Actual input for chart
@@ -143,7 +140,8 @@ let options = {
   barColour: "purple",
   labelColour: "limegreen",
   xAxisTitle: "Type of Fruit",
-  yAxisTitle: "Number of Fruits"
+  yAxisTitle: "Number of Fruits",
+  chartTitle: "Fruits I've Eaten This Year"
 }
 
 drawBarChart(data, options);
