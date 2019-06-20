@@ -74,7 +74,8 @@ $(document).ready(function () {
       $(".label").css({"bottom":0});
     }
     $(".label").css({"text-align": "center",
-                      "position": "absolute"});
+                      "position": "absolute",
+                      "color": options.labelColour});
   }
   function generateYScale(array){
     let yInterval = 0; // determined by max val, will be customizeable
@@ -138,8 +139,9 @@ $(document).ready(function () {
   pear: 54,
 }
 let options = {
-  labelPosition: "bottom", //options: top, bottom, or center;
+  labelPosition: "centre", //options: top, bottom, or center;
   barColour: "purple",
+  labelColour: "limegreen",
 }
 
 drawBarChart(data, options);
