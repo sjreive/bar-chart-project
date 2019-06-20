@@ -94,14 +94,14 @@ $(document).ready(function () {
     }
   }
 
-  function generateXAxisTitle(){
+  function generateXAxisTitle(options){
     $("<div/>",{id: "xaxistitle"}).appendTo("#xlabelspace");
-    document.getElementById("xaxistitle").innerHTML = "X AXIS TITLE";
+    document.getElementById("xaxistitle").innerHTML = options.xAxisTitle;
   }
 
-  function generateYAxisTitle(){
+  function generateYAxisTitle(options){
     $("<div/>",{id:"yaxistitle"}).appendTo("#ylabelspace");
-    document.getElementById("yaxistitle").innerHTML = "Y AXIS TITLE";
+    document.getElementById("yaxistitle").innerHTML = options.yAxisTitle;
   }
 
   function generateChartSpace(){
@@ -121,10 +121,10 @@ $(document).ready(function () {
     generateChartSpace();
     generateYAxis();
     generateYScale(chartValues);
-    generateYAxisTitle();
+    generateYAxisTitle(options);
     generateXAxis();
     generateXLabels(chartValues);
-    generateXAxisTitle();
+    generateXAxisTitle(options);
     createBar(chartValues, options); //calls createBar function to append a bar for each data element added
     barHeight(chartValues); // calls barHeight function
     barWidth(chartValues, valueLabels); // calls barWidth function
@@ -142,6 +142,8 @@ let options = {
   labelPosition: "centre", //options: top, bottom, or center;
   barColour: "purple",
   labelColour: "limegreen",
+  xAxisTitle: "Type of Fruit",
+  yAxisTitle: "Number of Fruits"
 }
 
 drawBarChart(data, options);
