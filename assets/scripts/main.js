@@ -23,41 +23,41 @@ $(document).ready(function () {
     }
   }
 
-  function barWidth(chartValues, valueLabels){
-    let length= chartValues.length;
-    setBarWidth = 100/(length*1.5);
-    setMarginWidth = setBarWidth / 4;
+  function barWidth(chartValues, valueLabels, options){
+    let margin = 4; //default bar spacing is "large"
+    if (options.barSpacing === "small") {
+      margin = 8;
+    } else if (options.barSpacing === "medium") {
+      margin = 6;
+    }
+    let setMarginWidth = 100 / chartValues.length / margin; // calculates width of the margin on each side of the bar
+    let setBarWidth = 100 / chartValues.length - setMarginWidth * 2; // calcultates with of the bar
+     // width of margin on each side of bar
     for (let i = 1; i <= chartValues.length; i++) {
-     document.getElementById("bar" + i).style.width = setBarWidth+"%"; //sets width of bars based on number of chartValues values
-     document.getElementById("bar" + i).style.marginLeft = setMarginWidth+"%"; //sets the width of the margins on either side of the bars
-     document.getElementById("bar" + i).style.marginRight = setMarginWidth+"%";
-    // NTS figure out if there is a way to make this more efficient..
-     document.getElementById("xlabel" + i).style.width = setBarWidth+"%";
-     document.getElementById("xlabel" + i).style.marginLeft = setMarginWidth+"%"; //sets the width of the margins on either side of the bars
-     document.getElementById("xlabel" + i).style.marginRight = setMarginWidth+"%";
+     document.getElementById("bar" + i).style.width = setBarWidth + "%"; //sets width of bars based on number of chartValues values
+     document.getElementById("bar" + i).style.marginLeft = setMarginWidth + "%"; //sets the width of the margins on either side of the bars
+     document.getElementById("bar" + i).style.marginRight = setMarginWidth + "%";
+     document.getElementById("xlabel" + i).style.width = setBarWidth + "%";
+     document.getElementById("xlabel" + i).style.marginLeft = setMarginWidth + "%"; //sets the width of the margins on either side of the bars
+     document.getElementById("xlabel" + i).style.marginRight = setMarginWidth + "%";
      document.getElementById("xlabel" + i).innerHTML = valueLabels[i-1];
     }
   }
 
   function generateXAxis(){
-    $("<hr/>",{"class": "axis"}).appendTo("#xaxis");
+    $("<hr/>",{"class": "axis", "align":"left",}).appendTo("#xaxis");
   }
 
   function generateYAxis(){
     $("<div/>", {id: "yaxis","class": "axis"}).appendTo("#ylabelspace");
   }
 
-  function generateDataLabelSpace(array){
-    for (let i = 1; i <= array.length; i++){
-    $("<div/>", {"class": "label",
-                  id: "datalabel" + i,
-                  "height": "25px",
-                  "text-align": "center",
-                  "position": "absolute",
-                  "width": "100%",
-                }).appendTo("#bar" + i);
+  function generateDataLabelSpace(data){
+    for (let i = 1; i <= data.length; i++){
+    $("<div/>", {"class": "label", id: "datalabel" + i, "height": "25px", "text-align": "center", "position": "absolute", "width": "100%",}).appendTo("#bar" + i);
     }
   }
+
   function generateLabels(chartValues, options){
   for (let i = 1; i <= chartValues.length; i++){
     document.getElementById("datalabel" + i).innerHTML = chartValues[i-1]; //create the label
@@ -67,9 +67,7 @@ $(document).ready(function () {
     } else if (options.labelPosition === "bottom") {
       $(".label").css({"bottom":0});
     }
-    $(".label").css({"text-align": "center",
-                      "position": "absolute",
-                      "color": options.labelColour});
+    $(".label").css({"text-align": "center", "position": "absolute","color": options.labelColour});
   }
   function generateYScale(array){
     let yInterval = 0; // determined by max val, will be customizeable
@@ -108,12 +106,12 @@ $(document).ready(function () {
 
   function generateTitle(options){
     document.getElementById("titlespace").innerHTML = options.chartTitle;
-    $("#titlespace").css({"margin-left": "19%","margin-bottom":"30px", "text-align":"center"})
+    $("#titlespace").css({"margin-left": "19%","margin-bottom":"30px", "text-align":"center", "color":options.titleFontColour, "font-size":options.titleFontSize})
   }
 
   function drawBarChart(data, options){
-    let chartValues = Object.values(data); // array containing values
-    let valueLabels = Object.keys(data);
+    let chartValues = Object.values(data); // array containing values of bar chart options
+    let valueLabels = Object.keys(data); // array containing keys, or names of bar chart options
     generateChartSpace();
     generateYAxis();
     generateYScale(chartValues);
@@ -123,7 +121,7 @@ $(document).ready(function () {
     generateXAxisTitle(options);
     createBar(chartValues, options); //calls createBar function to append a bar for each data element added
     barHeight(chartValues); // calls barHeight function
-    barWidth(chartValues, valueLabels); // calls barWidth function
+    barWidth(chartValues, valueLabels, options); // calls barWidth function
     generateDataLabelSpace(chartValues);
     generateLabels(chartValues, options);
     generateTitle(options);
@@ -141,7 +139,11 @@ let options = {
   labelColour: "limegreen",
   xAxisTitle: "Type of Fruit",
   yAxisTitle: "Number of Fruits",
-  chartTitle: "Fruits I've Eaten This Year"
+  chartTitle: "Fruits I've Eaten This Year",
+  titleFontColour: "blue",
+  titleFontSize: "30px",
+  barSpacing: "large", //can be small , medium , or large;
+  chartWidth: "80%" //as a percent of the viewport
 }
 
 drawBarChart(data, options);
