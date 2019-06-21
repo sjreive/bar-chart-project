@@ -96,11 +96,11 @@ $(document).ready(function () {
     document.getElementById("yaxistitle").innerHTML = options.yAxisTitle;
   }
 
-  function generateChartSpace(){
-    $("<div/>", {id:"titlespace", "height":"30px","margin-left":"19%"}).appendTo("#chart");
-    $("<div/>",{id:"ylabelspace"}).appendTo("#chart");
-    $("<div/>",{id:"chartspace"}).appendTo("#chart");
-    $("<div/>",{id:"xlabelspace"}).appendTo("#chart");
+  function generateChartSpace(element){
+    $("<div/>", {id:"titlespace", "height":"30px","margin-left":"19%"}).appendTo("#"+element);
+    $("<div/>",{id:"ylabelspace"}).appendTo("#"+element);
+    $("<div/>",{id:"chartspace"}).appendTo("#"+element);
+    $("<div/>",{id:"xlabelspace"}).appendTo("#"+element);
     $("<div/>",{id:"xaxis"}).appendTo("#xlabelspace");
   }
 
@@ -109,10 +109,10 @@ $(document).ready(function () {
     $("#titlespace").css({"margin-left": "19%","margin-bottom":"30px", "text-align":"center", "color":options.titleFontColour, "font-size":options.titleFontSize})
   }
 
-  function drawBarChart(data, options){
+  function drawBarChart(data, options, element){
     let chartValues = Object.values(data); // array containing values of bar chart options
     let valueLabels = Object.keys(data); // array containing keys, or names of bar chart options
-    generateChartSpace();
+    generateChartSpace(element);
     generateYAxis();
     generateYScale(chartValues);
     generateYAxisTitle(options);
@@ -129,22 +129,26 @@ $(document).ready(function () {
 
 // Actual input for chart
   let data = {
-  apple: 28,
-  orange: 17,
-  pear: 54,
-}
-let options = {
-  labelPosition: "centre", //options: top, bottom, or center;
-  barColour: "purple",
-  labelColour: "limegreen",
-  xAxisTitle: "Type of Fruit",
-  yAxisTitle: "Number of Fruits",
-  chartTitle: "Fruits I've Eaten This Year",
-  titleFontColour: "blue",
-  titleFontSize: "30px",
-  barSpacing: "large", //can be small , medium , or large;
-  chartWidth: "80%" //as a percent of the viewport
-}
+    apple: 28,
+    orange: 17,
+    pear: 54,
+  }
+  let options = {
+    labelPosition: "centre", //options: top, bottom, or center;
+    barColour: "purple",
+    labelColour: "limegreen",
+    xAxisTitle: "Type of Fruit",
+    yAxisTitle: "Number of Fruits",
+    chartTitle: "Fruits I've Eaten This Year",
+    titleFontColour: "blue",
+    titleFontSize: "30px",
+    barSpacing: "large", //can be small , medium , or large;
+    chartWidth: "80%" //as a percent of the viewport
+  }
 
-drawBarChart(data, options);
+  let element = "chart"; // name of div ID to append chart to.
+
+
+  drawBarChart(data, options, element);
+
 });
