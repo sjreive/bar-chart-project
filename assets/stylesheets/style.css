@@ -4,91 +4,11 @@ h1 {
   text-align: center;
 }
 
-.button {
-  text-align: center;
-}
 
 #chart {
   margin: auto;
   width: 70%;
 }
-
-#chartspace {
-  display: inline-block;
-  width: 80%;
-
-}
-
-.bar {
-  position: relative;
-  background-color: greenyellow;
-  display: inline-block;
-  max-height: 300px;
-  vertical-align: bottom;
-}
-
-
-#xlabelspace {
-  margin-left: 19%;
-  height: 80px;
-}
-
-hr {
-  border-width: 1px;
-  margin-top: 0px;
-  border-color: black;
-}
-
-.xlabel {
-  display: inline-block;
-  height: 20px;
-  text-align: center;
-}
-
-#xaxistitle{
-  height: 20px;
-  margin-top: 20px;
-  text-align: center;
-
-}
-#ylabelspace{
-  display: inline-block;
-  margin-bottom: -2px;
-  width: 19%;
-  height: 300px;
-  position: relative;
-  vertical-align: bottom;
-
-}
-
-#yaxis{
-  width: 2px;
-  height: 300px;
-  background-color: black;
-  float: right;
-}
-#yscale{
-  height: 300px;
-  width: auto;
-  float: right;
-}
-
-.ylabel{
-  width: auto;
-  display: block;
-  text-align: right;
-}
-
-#yaxistitle{
-  height: auto;
-  display: inline-block;
-  text-align: center;
-  position: absolute;
-  top: 40%;
-  margin-right: 15px;
-  -webkit-transform: rotate(270deg);
-}
-
 
 
 
