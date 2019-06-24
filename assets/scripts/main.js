@@ -4,8 +4,7 @@ $(document).ready(function () {
     for (let i = 0; i < chartValues.length; i++) {
       $("<div/>", {"class": "bar", id: "bar"+(i+1)}).appendTo("#chartspace");
     }
-    let colour = options.barColour;
-    $(".bar").css({"background-color" : colour, "position" : "relative", "display" : "inline-block", "vertical-align":"bottom"});
+    $(".bar").css({"position" : "relative", "display" : "inline-block", "vertical-align":"bottom"});
   }
 
   function barHeight(array){
@@ -32,11 +31,12 @@ $(document).ready(function () {
     }
     let setMarginWidth = 100 / chartValues.length / margin; // calculates width of the margin on each side of the bar
     let setBarWidth = 100 / chartValues.length - setMarginWidth * 2; // calcultates with of the bar
-     // width of margin on each side of bar
+    let colour = options.barColour;
     for (let i = 1; i <= chartValues.length; i++) {
       document.getElementById("bar" + i).style.width = setBarWidth + "%"; //sets width of bars based on number of chartValues values
       document.getElementById("bar" + i).style.marginLeft = setMarginWidth + "%"; //sets the width of the margins on either side of the bars
       document.getElementById("bar" + i).style.marginRight = setMarginWidth + "%";
+      document.getElementById("bar" + i).style.backgroundColor = colour;
       document.getElementById("xlabel" + i).style.width = setBarWidth + "%";
       document.getElementById("xlabel" + i).style.marginLeft = setMarginWidth + "%"; //sets the width of the margins on either side of the bars
       document.getElementById("xlabel" + i).style.marginRight = setMarginWidth + "%";
@@ -141,28 +141,54 @@ $(document).ready(function () {
   }
 
 // Actual input for chart
-  let data = {
-    apple: 28,
-    orange: 17,
-    pear: 54,
+  let dataOne = {
+    oranges: 13,
+    apples: 10,
+    pears: 19,
+    berries: 68,
+    plums: 33
   }
-  let options = {
-    labelPosition: "centre", //options: top, bottom, or center;
-    barColour: "purple",
-    labelColour: "limegreen",
+  let optionsOne = {
+    labelPosition: "top", //options: top, bottom, or center;
+    barColour: "#6BB6BC",
+    labelColour: "#E2CCC6",
     xAxisTitle: "Type of Fruit",
     yAxisTitle: "Number of Fruits",
-    chartTitle: "Fruits I've Eaten This Year",
-    titleFontColour: "blue",
-    titleFontSize: "30px",
-    barSpacing: "large", //can be small , medium , or large;
+    chartTitle: "FRUITS I'VE EATEN THIS YEAR",
+    titleFontColour: "gr",
+    titleFontSize: "25px",
+    barSpacing: "small", //can be small , medium , or large;
     chartWidth: "80%", //as a percent of the viewport
     chartHeight: "300" //numeric value in px
   }
 
-  let element = "chart"; // name of div ID to append chart to.
+  let elementOne = "chart1"; // name of div ID to append chart to.
 
 
-  drawBarChart(data, options, element);
+  let dataTwo = {
+    "miss my dog": 6,
+    "code isn't working": 12,
+    "sad commercial": 3,
+  }
+  let optionsTwo = {
+    labelPosition: "centre", //options: top, bottom, or center;
+    barColour: "#FB9F8B",
+    labelColour: "#077B88",
+    xAxisTitle: "Reason for crying",
+    yAxisTitle: "Number of cries",
+    chartTitle: "A MONTHS' WORTH OF CRYING",
+    titleFontColour: "#E2CCC6",
+    titleFontSize: "25px",
+    barSpacing: "large", //can be small , medium , or large;
+    chartWidth: "80%", //as a percent of the viewport
+    chartHeight: "320" //numeric value in px
+  }
+
+  let elementTwo = "chart2"; // name of div ID to append chart to.
+
+  drawBarChart(dataTwo, optionsTwo, elementTwo);
+  drawBarChart(dataOne, optionsOne, elementOne);
 
 });
+
+
